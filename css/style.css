@@ -4,9 +4,9 @@
 :root{
     --c-dark: #212529;
     --c-brand: #238a8c;
-    --c-brand-light: #41b1b3;
+    --c-brand-light: #379798;
     --c-brand-rgb: 35,138,140;
-    --c-body:#7c7676;
+    --c-body:#ffffff;
     --font-base:"ClashDisplay",sans-serif;
     --box-shadow:0px 15px 25px rgba(0,0,0,0.08);
     --transition:all 0.5s ease;
@@ -83,7 +83,20 @@ img {
 /* HOME PAGE */
 
 #home-page{
-    background: linear-gradient(#ffffff48,#c5baba40),url(../images/mainpage.jpg);
+    background: linear-gradient(rgb(3,19,36),rgba(102, 156, 160, 0.078)),url(../images/welcome.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.custom-text-center{
+    text-align: center;
+}
+
+
+/* MY COUNTRY PAGE */
+
+#myCountry-page{
+    background: linear-gradient(rgb(3, 19, 36),rgba(116, 105, 89, 0.078)),url(../images/mycountry-banner.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -95,4 +108,3 @@ img {
 .custom-text-center h5{
     margin-bottom: 80px;
 }
-
