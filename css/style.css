@@ -17,12 +17,20 @@ body{
     font-family: var(--font-base);
     line-height:1.7;
     color:var(--c-body);
+    /* margin-bottom:50px; */
 }
 
 h1,h2,h3,h4,h5,h6,
-.h1,.h2,.h3,.h4,.h5,.h6
+.h1,.h2,.h3,.h4,.h5,.h6 
 {
     font-weight: 600;
+    /* color: var(--c-dark); */
+    color:black;
+}
+
+p{
+    font-weight:400;
+    color:black;
 }
 
 a{
@@ -107,4 +115,50 @@ img {
 
 .custom-text-center h5{
     margin-bottom: 80px;
+}
+
+/* SECTION TITLE */
+.section-title{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.section-title .line{
+    width: 70px;
+    height: 4px;
+    background-color:var(--c-brand);
+    margin:5px auto 24px auto ;  /* top , right, bottom, left*/
+}
+
+.section-title p{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--c-dark);
+    font-weight: 600px;
+
+}
+/*MY PHOTO - ABOUT PAGE*/
+.myPhoto-aboutpage {
+    max-width: 100%;
+    /* width: 400px; */
+    height: auto;
+  }
+
+/* ICONBOX STYLING*/
+.iconbox{
+    width: 50px;
+    height: 50px;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--c-brand-rgb),0.2);
+    color:var(--c-brand);
+    font-size: 35px;
+    flex: none;
+}
+
+/* SPACE SETTING FOR PAGE'S MARGIN-BOTTOM */
+.bottom-space{
+margin-bottom: 50px;
 }
