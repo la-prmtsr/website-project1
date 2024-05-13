@@ -1,3 +1,24 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    extract($_POST);
+    $file = fopen("contact-result.txt", "a");
+
+    fwrite($file, "Name: " . $name . "\n");
+    fwrite($file, "Surname: " . $surname . "\n");
+    fwrite($file, "Email: " . $email . "\n");
+    fwrite($file, "Message: " . $message . "\n");
+    
+    // Add a line break or empty line
+    fwrite($file, "\n"); // For newline character
+
+    fclose($file);
+
+    // Redirect to a new page to display the contents of contact-result.txt
+    header("Location: contact-result.txt");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +68,7 @@
                 <a class="nav-link" href="myInterests.html">My Interests</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+                <a class="nav-link active" aria-current="page" href="contact.php">Contact</a>
               </li>
               
             </ul>
@@ -70,13 +91,13 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form id="contact-form" class="row g-3 ">  <!-- g = gather space for the form -->
+                    <form action="" method="post" id="contact-form" class="row g-3 ">  <!-- g = gather space for the form -->
                         <div class="form-group col-lg-6">
                           <input type="text" id="name" name="name" class="form-control" placeholder="Enter first name"  required>
                         </div>
                         <div class="form-group col-lg-6">
                             <!-- <label for="name">Surname:</label> -->
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter last name"  required>
+                            <input type="text" id="surname" name="surname" class="form-control" placeholder="Enter last name"  required>
                           </div>
                         <div class="form-group col-lg-12">
                           <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address" required>
@@ -100,7 +121,40 @@
 
     <script src="main.js"></script> 
     <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("contact-form");
+        const clearBtn = document.getElementById("clear-btn");
 
+        form.addEventListener("submit", function(event) {
+            const name = document.getElementById("name").value.trim();
+            const surname = document.getElementById("surname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === "" || surname === "" || email === "" || message === "") {
+                alert("Please fill in all fields.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                event.preventDefault();
+                return;
+            }
+        });
+        clearBtn.addEventListener("click", function() {
+        // Clear all form fields
+        document.getElementById("name").value = "";
+        document.getElementById("surname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        });
+    });
+</script>
 </body>
 
 </html>
+

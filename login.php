@@ -10,7 +10,7 @@ if(isset($_POST['email'])){
 
     // Control the validation of the email 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $message = '<div class="message-box error">Error, please enter a valid email address</div>';
+        $message = '<div class="message-box warning">Error, please enter a valid email address</div>';
     }
     else{
         if($email == $mail && $password == $pass){
@@ -50,24 +50,24 @@ if(isset($_POST['email'])){
     <!-- Styling Message Box for LOGIN  -->
     <style>
         .message-box {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
             font-weight: bold;
-           width: auto;
+            width: auto;
             text-align: center;
-        }
-
-        .success {
-            color: green;
-            background-color: #DFF2BF;
-            border: 1px solid #4F8A10;
         }
 
         .error {
             color: red;
             background-color: #FFBABA;
             border: 1px solid #D8000C;
+        }
+
+        .warning {
+            color: orangered;
+            background-color: #FFF3CD; /* Adjusted background color */
+            border: 1px solid #FFA500; /* Adjusted border color */
         }
     </style>
 
@@ -121,19 +121,18 @@ if(isset($_POST['email'])){
 
     <!-- Login Page Start-->
 
-
     <section id="login-page" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="section-title">
-                        <h1 class="text-black display-5 fw-semibold">LOG IN</h1>
+                        <h1 class="text-black display-5 fw-semibold">LOGIN</h1>
                         <div class="line"></div>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8 bg-dark p-5 align-items-center" style="border-radius: 1rem;">
+                <div class="col-lg-6 bg-dark p-5 align-items-center" style="border-radius: 1rem;">
 
                     <!-- HTML code to display the message -->
                     <?php echo $message; ?>
@@ -148,7 +147,7 @@ if(isset($_POST['email'])){
                             <label for="password">Password:</label><br>
                             <input type="text" id="password" name="password"  class="form-control" placeholder="ex: b1812100001"  required>                          </div>
                         <div class="form-group col-lg-12 d-grid">
-                            <button type="submit" id="submit-btn" class="btn btn-brand">LOG IN</button>
+                            <button type="submit" id="submit-btn" class="btn btn-brand mt-2">LOG IN</button>
                         </div>
                     </form>
                 </div>  
