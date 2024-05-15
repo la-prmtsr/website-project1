@@ -18,7 +18,7 @@
        
     <!-- Style CSS -->
     <link rel="stylesheet" href="./css/style.css">
-   
+
 </head>
 
 <body>
@@ -35,10 +35,10 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="about.html">About</a>
+                <a class="nav-link"  href="about.html">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="myCountry.html">My Country</a>
+                <a class="nav-link active" aria-current="page" href="myCountry.html">My Country</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="myCV.html">My CV</a>
@@ -57,26 +57,160 @@
       </nav>
     <!-- Navbar Section Exit -->
 
-    <!-- My Country Page Start-->
-    <section id="myCountry-page" class="min-vh-100 d-flex align-items-center custom-text-center">
+    <!-- My Country Page BANNER Start-->
+    <section id="myCountry-page" class="min-vh-100 d-flex align-items-center custom-text-center bottom-space">
 
       <div class="container">
         <div class="row">
           <div class="col-12">
             <h1 class="text-uppercase text-white fw-semibold display-1"> Indonesia </h1>  <!-- fw = font-weight -->
             <h5 class="text-white mt-2 mb-6"> Come, let us be your guide to the wonders of Indonesia. Your journey begins here.</h5>
-            <a href="about.html" class="btn btn-brand me-3 ms-3">Start Exploring</a>
+            <a href="#population" class="btn btn-brand me-3 ms-3">Start Exploring</a>
             <a href="ourHeritage.html" class="btn btn-light me-3 ms-3">Our Heritage</a>
           </div>
         </div>
       </div>
-      
-
     </section>
-    <!-- My Country Page End-->
+    <!-- My Country Page BANNER End-->
+    
 
+    <!-- My Country Page POPULATION Start -->
+    <div id="population" class="row">
+      <div class="col-12 text-center">
+          <div class="section-title">
+              <h1 class="text-black display-6 fw-semibold">Did You Know?</h1>
+              <div class="line"></div>
+          </div>
+      </div>
+    </div>
+    <section id="myCountry-population" class="section-padding border-top bottom-space">
+      <div class="container text-center">
+        <div class="row g-4">
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="fw-semibold display-3 text-white">270M+</h1>
+            <h6 class="text-uppercase text-white mt-3">Population of Indonesia</h6>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="fw-semibold display-3 text-white">17K+</h1>
+            <h6 class="text-uppercase text-white mt-3">Islands</h6>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="fw-semibold text-white display-3">300+</h1>
+            <h6 class="text-uppercase text-white mt-3">Ethnic Groups</h6>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="fw-semibold text-white display-3">700+</h1>
+            <h6 class="text-uppercase text-white mt-3">Languanges Spoken</h6>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- My Country Page POPULATION End -->
+
+    <!-- Geography of Indonesia Start -->
+     <section id="geography-page" class="section-padding bottom-space">
+      <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h1 class="text-black display-6 fw-semibold">Where is Indonesia?</h1>
+                    <div class="line">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between m align-items-center">
+          <div class="col-lg-6">
+            <img src="./images/indo-map.jpg" alt="" class="indo-map-photo">
+          </div>
+          <div class="col-lg-5">
+            <div class="d-flex pt-4 mb-2 align-items-center">
+              <div class="iconbox2 me-4 ">
+                <i class="ri-road-map-fill"></i>
+              </div>
+              <div>
+                <h4 class="mt-2">Southeast Asia</h4>
+              </div>
+            </div>
+            <div class="d-flex pt-3 mb-3">
+              <p style="font-size: 18px">Indonesia stands as the largest archipelago globally, its vast expanse spread across the Indian and Pacific Oceans. 
+                Positioned along the volatile Pacific Ring of Fire, it is both blessed and burdened by its geology,
+                prone to natural disasters like earthquakes and volcanic eruptions. Surrounded by its maritime borders 
+                with Malaysia, Papua New Guinea, and East Timor, Indonesia's diverse landscapes and cultures thrive amidst
+                the dynamic forces of nature.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Geography of Indonesia End -->
+
+    <!-- Images Slider Start -->
+
+    <div class="row">
+      <div class="col-12 text-center">
+          <div class="section-title">
+              <h1 class="text-black display-6 fw-semibold">Discover Indonesia's Best Places to Visit</h1>
+              <div class="line"></div>
+          </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container-sliders">
+      <div class="slider-wrapper">
+        <div class="slider">
+          <img id="slide-1" src="./images/borobudur-temples.jpg" alt="Borobudur Temple on the Island of Java" 
+           onclick="openModal('Borobudur Temple : Ancient Buddhist monument in Indonesia, known for intricate carvings and as one of the world\'s largest.',
+           'https\://www.indonesia.travel/gb/en/destinations/java/magelang-regency/borobudur.html')">
+          <img id="slide-2" src="./images/raja-ampat.jpg" alt="Raja Ampat Island in West Papua, Indonesia."  
+           onclick="openModal('Raja Ampat : Premier diving destination with diverse marine life and pristine waters.',
+           'https\://www.indonesia.travel/gb/en/destinations/maluku-papua/raja-ampat.html')">
+          <img id="slide-3" src="./images/hindu-temple.jpg" alt="Hindu Temple in Bali Island" 
+           onclick="openModal('Bali Hindu Temples : Cultural landmarks adorned with intricate architecture and spiritual significance.',
+           'https\://www.indonesia.travel/gb/en/destinations/bali-nusa-tenggara/bali.html')">
+          <img src="./images/komodo-island.jpg" alt="Komodo, island of the Lesser Sunda Islands, NTT, Indonesia " 
+           onclick="openModal('Komodo Island : Home to Komodo dragons and rugged landscapes, offering unique wildlife encounters.',
+           'https\://www.indonesia.travel/gb/en/destinations/bali-nusa-tenggara/labuan-bajo/komodo-national-park.html')">
+        </div>
+        <div class="slider-nav">
+          <a href="#slide-1"></a>
+          <a href="#slide-2"></a>
+          <a href="#slide-3"></a>
+          <a href="#slide-4"></a>
+        </div>
+        
+    </section>
+
+    <!-- Images Slider End -->
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <div class="text-black modal-description"></div>
+        <a href="#" class="modal-button" target="_blank" id="modalLink">Explore More</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(description, link) {
+            const modal = document.getElementById('myModal');
+            const modalDescription = document.querySelector('.modal-description');
+            const modalLink = document.getElementById('modalLink');
+            modalDescription.textContent = description;
+            modalLink.href = link;
+            modal.style.display = 'block';
+           
+            // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        }
+    </script>
     <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
 
-</body>
+  </body>
 
 </html>

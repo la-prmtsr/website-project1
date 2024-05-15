@@ -90,26 +90,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <!-- <div class="col-lg-8 bg"> -->
+                <div class="col-lg-8 bg-dark" style="padding: 3rem; border-radius: 1rem;">
+
                     <form action="" method="post" id="contact-form" class="row g-3 ">  <!-- g = gather space for the form -->
                         <div class="form-group col-lg-6">
-                          <input type="text" id="name" name="name" class="form-control" placeholder="Enter first name"  required>
+                        <label for="name">Name:</label>
+                          <input type="text" id="name" name="name" class="form-control" placeholder="Enter your first name"  required>
                         </div>
                         <div class="form-group col-lg-6">
-                            <!-- <label for="name">Surname:</label> -->
-                            <input type="text" id="surname" name="surname" class="form-control" placeholder="Enter last name"  required>
+                            <label for="name">Surname:</label>
+                            <input type="text" id="surname" name="surname" class="form-control" placeholder="Enter your last name"  required>
                           </div>
                         <div class="form-group col-lg-12">
-                          <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address" required>
+                        <label for="name">Email:</label>
+                          <input type="email" id="email" name="email" class="form-control" placeholder="Enter a valid email address" required>
                         </div>
                         <div class="form-group col-lg-12">
+                        <label for="name">Message:</label>
                           <textarea id="message" name="message" rows="5"  class="form-control" placeholder="Enter your message" ></textarea>
                         </div>
                         <div class="form-group col-lg-6 d-grid"> <!--d-grid(display grid) makes the bottom cover all space along the form--> 
                           <button type="button" id="clear-btn" class="btn btn-light">Clear</button>
                         </div>
                         <div class="form-group col-lg-6 d-grid">
-                            <button type="submit" id="submit-btn" class="btn btn-brand">Submit</button>
+                            <button type="submit" id="submit-btn" class="btn btn-brand">Send</button>
                         </div>
                     </form>
                 </div>  
@@ -121,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="main.js"></script> 
     <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("contact-form");
