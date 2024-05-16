@@ -65,6 +65,13 @@ img {
 .navbar-nav.nav-link.active{
     color: var(--c-brand);
 }
+.navbar-nav .nav-link:hover,
+.navbar-nav.nav-link.active:hover{
+    font-weight: 500;
+    color : var(--c-brand);
+    
+}
+
 
 /* BUTTON (BTN) */
 .btn{
@@ -86,8 +93,8 @@ img {
     background-color: var(--c-brand-light);
     border-color: var(--c-brand-light);
     color: rgb(255, 255, 255);
-    
 }
+
 
 /* HOME PAGE */
 
@@ -297,3 +304,15 @@ margin-bottom: 50px;
     color:#0d9fa1;
     
 }
+
+/* OUR HERITAGES PAGE */
+#heritage-page{
+    background: linear-gradient(rgb(3,19,36),rgba(102, 156, 160, 0.078)),url(../images/ourHeritage-banner.jpg);
+    /* background: linear-gradient(rgb(5, 23, 5),rgba(102, 165, 101, 0.178)),url(../images/ourHeritage-banner.jpg); */
+    background-position: center;
+    background-size: cover;
+}
+#heritage-photo{
+    border-radius: 2rem;
+}
+
