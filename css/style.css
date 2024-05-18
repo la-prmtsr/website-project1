@@ -326,7 +326,13 @@ margin-bottom: 50px;
 }
 #heritage-photo{
     border-radius: 2rem;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
+#heritage-photo:hover{
+    transform: scale(1.1); /* Zoom effect */
+}
+
+
 
 /* MY INTEREST PAGE */
 header{
