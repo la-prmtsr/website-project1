@@ -3,10 +3,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
     $file = fopen("contact-result.txt", "a");
 
-    fwrite($file, "Name: " . $name . "\n");
-    fwrite($file, "Surname: " . $surname . "\n");
-    fwrite($file, "Email: " . $email . "\n");
-    fwrite($file, "Message: " . $message . "\n");
+    fwrite($file, "Name: " . htmlspecialchars($name) . "\n");
+    fwrite($file, "Surname: " . htmlspecialchars($surname) . "\n");
+    fwrite($file, "Email: " . htmlspecialchars($email) . "\n");
+    fwrite($file, "Message: " . htmlspecialchars($message) . "\n");
     
     // Add a line break or empty line
     fwrite($file, "\n"); // For newline character
@@ -32,10 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Iconbox link -->
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"
-    />    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />    
     
     <!-- Style CSS -->
     <link rel="stylesheet" href="./css/style.css">
@@ -93,28 +90,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- <div class="col-lg-8 bg"> -->
                 <div class="col-lg-8 bg-dark" style="padding: 3rem; border-radius: 1rem;">
 
-                    <form action="" method="post" id="contact-form" class="row g-3 ">  <!-- g = gather space for the form -->
+                    <form action="contact.php" method="post" id="contact-form" class="row g-3 ">  <!-- g = gather space for the form -->
                         <div class="form-group col-lg-6">
                         <label for="name">Name:</label>
-                          <input type="text" id="name" name="name" class="form-control" placeholder="Enter your first name"  required>
+                          <input type="text" id="name" name="name" class="form-control" placeholder="Enter your first name"  >
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="name">Surname:</label>
-                            <input type="text" id="surname" name="surname" class="form-control" placeholder="Enter your last name"  required>
+                            <label for="surname">Surname:</label>
+                            <input type="text" id="surname" name="surname" class="form-control" placeholder="Enter your last name"  >
                           </div>
                         <div class="form-group col-lg-12">
-                        <label for="name">Email:</label>
-                          <input type="email" id="email" name="email" class="form-control" placeholder="Enter a valid email address" required>
+                        <label for="email">Email:</label>
+                          <input type="email" id="email" name="email" class="form-control" placeholder="Enter a valid email address" >
                         </div>
                         <div class="form-group col-lg-12">
-                        <label for="name">Message:</label>
+                        <label for="message">Message:</label>
                           <textarea id="message" name="message" rows="5"  class="form-control" placeholder="Enter your message" ></textarea>
                         </div>
-                        <div class="form-group col-lg-6 d-grid"> <!--d-grid(display grid) makes the bottom cover all space along the form--> 
+                        <div class="form-group col-lg-4 d-grid"> <!--d-grid(display grid) makes the bottom cover all space along the form--> 
                           <button type="button" id="clear-btn" class="btn btn-light">Clear</button>
                         </div>
-                        <div class="form-group col-lg-6 d-grid">
-                            <button type="submit" id="submit-btn" class="btn btn-brand">Send</button>
+                        <div class="form-group col-lg-4 d-grid">
+                            <button type="submit" id="submit-btn-js" class="btn btn-brand">Send by js</button>
+                        </div>
+                        <div class="form-group col-lg-4 d-grid">
+                            <button type="button" id="submit-btn-vue" class="btn btn-brand">Send by Vue.js</button>
                         </div>
                     </form>
                 </div>  
@@ -124,15 +124,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
     <!-- Contact Page End-->
 
-    <script src="main.js"></script> 
-    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+    <!-- Vanilla JavaScript Form Validation -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("contact-form");
         const clearBtn = document.getElementById("clear-btn");
 
         form.addEventListener("submit", function(event) {
+            if (event.submitter.id !== "submit-btn-js") {
+                return; // Skip validation for non-JS submit buttons
+            }
+
             const name = document.getElementById("name").value.trim();
             const surname = document.getElementById("surname").value.trim();
             const email = document.getElementById("email").value.trim();
@@ -151,16 +156,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 return;
             }
         });
+
         clearBtn.addEventListener("click", function() {
-        // Clear all form fields
-        document.getElementById("name").value = "";
-        document.getElementById("surname").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("surname").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
         });
     });
-</script>
+    </script>
+
+    <!-- Vue.js Form Validation -->
+    <script>
+    new Vue({
+        el: '#contact-form',
+        data: {
+            name: '',
+            surname: '',
+            email: '',
+            message: '',
+            emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        },
+        methods: {
+            validateForm() {
+                if (this.name === '' || this.surname === '' || this.email === '' || this.message === '') {
+                    alert("Please fill in all fields.");
+                    return false;
+                }
+                if (!this.emailRegex.test(this.email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                return true;
+            },
+            submitVueForm(event) {
+                if (!this.validateForm()) {
+                    event.preventDefault();
+                }
+            }
+        }
+    });
+
+    document.getElementById('submit-btn-vue').addEventListener('click', function(event) {
+        const vueInstance = document.getElementById('contact-form').__vue__;
+        vueInstance.submitVueForm(event);
+    });
+    </script>
+
 </body>
 
 </html>
-
